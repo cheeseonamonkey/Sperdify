@@ -1,51 +1,54 @@
-# Starter Kit for Vite, React, TypeScript, Tailwind and Node.js ESM
-
-_Minimal, sensible defaults, fast._
-
-Read [the blog post about this template](https://cpojer.net/posts/fastest-frontend-tooling-in-2022).
+# Sperdify
 
 ## Technologies
 
-- [Vite](https://vitejs.dev/)
+
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org)
+    - [Code converter](https://csharptotypescript.azurewebsites.net) - This might be useful for the very beginning of simple Javascript/Typescript woes, like declaring variables.
+    - [TypeScript for C# Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-oop.html)
 - [Tailwind](https://tailwindcss.com/)
-- [pnpm](https://pnpm.io/ja/) (_Optional_)
+    - A nice [cheat sheet](https://nerdcave.com/tailwind-cheat-sheet)
+- [Vite](https://vitejs.dev/) *(build tool, shouldn't need too much attention)*
 
-![screenshot of `App.tsx`](./screenshot.png)
+
+
 
 ## Setup
 
-- Press the "Use this template" on the top of this repository's GitHub page.
-- Run `pnpm install` (or `npm install` if you don't use `pnpm`).
-- `pnpm dev` for development.
-- Use `pnpm test` to run tests.
-- `pnpm build` for production builds.
+- *make sure node is installed*
 
-_Note: You can install `pnpm` via `homebrew` on macOS: `brew install pnpm`._
+```shell
+    # list dependencies
+    npm list
 
-## Protips for the fastest Developer Experience
+    # instalkl dependencies:
+    npm install
 
-- Use [`npm-run-all`](https://github.com/mysticatea/npm-run-all) to parallelize local test runs.
-- Prettier and eslint have `--cache` flags. Use them!
-- Do not run prettier inside of `eslint`. It commonly takes 50% of the eslint runtime!
-- Automatically sort imports when running prettier/saving the document via [`@ianvs/prettier-plugin-sort-imports`](https://github.com/ianvs/prettier-plugin-sort-imports).
-- Use `swc` with `ts-node` for fast node scripts with [ESM](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/). See below ↓
-
-## Run node scripts with ESM and TypeScript, fast.
-
-Create a `script.ts` file, run `chmod x script.ts` and execute it via `./script.ts`.
+    # run live build:
+    npm run dev
 
 ```
-#!/usr/bin/env node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm
 
-console.log('Your code goes here.');
-```
 
-Use this to restart your scripts instantly when a file changes:
+---
 
-```
-#!/usr/bin/env NODE_ENV=development node --watch --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm
 
-console.log('This processes instantly restarts when a file changes.');
-```
+## Thoughts on learning JS/TS:
+
+I think it's much better to learn Java/C# *(which are very similar)* before Javascript.
+
+To figure out Javascript syntax, I am constantly opening the developer console *(F12)* in Chrome, to enter Javascript straight into the 'Console' tab. It is fast, efficient, has autocompletion, and prints stuff very cleanly.
+
+Obviously, the first apparent syntax differences is types, but not for the reason you initally expect. Primitive types *(in vanilla Javascript)* are:
+- `Number` - including integers and floating-point numbers
+- `String`
+- `Boolean`
+- `Null` - variable defined, but is null
+- `Undefined` - variable doesn't exist
+- `Object` - "empty" object
+
+Except *any* object can have *any* property *(so classes are not mandatory)*:
+> ![Alt text](image.png)
+
+Lean on Intellicode! I wouldn't start without it!
