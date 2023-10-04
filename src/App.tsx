@@ -5,8 +5,8 @@ import AboutPage from './pages/AboutPage';
 import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 
-import Header from './shared/Header';
-import Footer from './shared/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {

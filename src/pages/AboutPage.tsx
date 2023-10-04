@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useAuthCode, useCount, useIsLoggedIn, useSomeBoolean } from '../util/GlobalStates';
+import StaticMeter from '../components/StaticMeter';
 
 
 export default function AboutPage() {
@@ -15,7 +16,9 @@ export default function AboutPage() {
     return (
         <>
 
-
+            <StaticMeter label={"Thing"} value={4} max={10} />
+            <StaticMeter label={"Thing"} value={6} max={10} />
+            <StaticMeter label={"Thing"} value={2} max={10} />
 
             <div className='m-2 ml-3 border border-gray-500 shadow-inner bg-gray-100 flex flex-col items-center p-4 rounded-lg'>
 

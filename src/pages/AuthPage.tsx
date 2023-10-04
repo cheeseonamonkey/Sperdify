@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AuthButton from '../shared/AuthButton';
+import AuthButton from '../components/AuthButton';
 import { useAuthCode, useIsLoggedIn } from '../util/GlobalStates';
 
 export default function AuthPage() {
@@ -11,10 +11,15 @@ export default function AuthPage() {
     const [country, setCountry] = useState('');
     const [product, setProduct] = useState('');
     const [followers, setFollowers] = useState(0);
-    const [profileUrl, setProfileUrl] = useState('');
 
     useEffect(() => {
-        // same as before...
+        const urlParams = new URLSearchParams(window.location.hash.substr(1));
+        const token = urlParams.get('access_token');
+
+        if (token) {
+            setAuthCode(token);
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
     }, []);
 
     useEffect(() => {
@@ -32,7 +37,6 @@ export default function AuthPage() {
                     setCountry(data.country);
                     setProduct(data.product);
                     setFollowers(data.followers.total);
-                    setProfileUrl(data.external_urls.spotify);
                 })
                 .catch((error) => {
                     console.error('Error fetching user data:', error);
@@ -54,7 +58,6 @@ export default function AuthPage() {
                             <p>Country: {country}</p>
                             <p>Product: {product}</p>
                             <p>Followers: {followers}</p>
-                            <a href={profileUrl} target="_blank" rel="noreferrer">Go to Spotify profile</a>
                             {profileImage && (
                                 <img src={profileImage} alt="Profile" className="w-32 h-32 rounded-full mx-auto mt-4" />
                             )}
