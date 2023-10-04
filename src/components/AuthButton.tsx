@@ -6,7 +6,7 @@ interface AuthButtonProps {
 
 const AuthButton: React.FC<AuthButtonProps> = ({ isLoggedIn }) => {
     const CLIENT_ID = '8e2f230cbe524ed78ca17438a8cb11e8';
-    const REDIRECT_URI = window.location.href;
+    const REDIRECT_URI = window.location.origin + '/auth';
     const SCOPES = 'user-read-private user-read-email';
 
     const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES}&response_type=token&show_dialog=true`;

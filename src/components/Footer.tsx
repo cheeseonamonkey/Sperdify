@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer: React.FC = () => {
     return (
-        <footer className="bg-cyan-900 px-5 pb-0 pt-1 text-white">
-            <p> github </p>
+        <footer className="fixed opacity-60 font-arvo text-xs bottom-0 w-full bg-cyan-900 py-0 text-gray-100">
+            <a href="https://www.github.com/cheeseonamonkey/Sperdify">github</a>
         </footer>
     );
 }

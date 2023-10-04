@@ -1,29 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-import AboutPage from './pages/AboutPage';
-import AuthPage from './pages/AuthPage';
-import HomePage from './pages/HomePage';
-
+import AppRouter from './pages/AppRouter';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <div className="flex-grow">
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/auth' element={<AuthPage />} />
-            <Route path='/about' element={<AboutPage />} />
-            <Route path='*' element={<NotFoundPage />} />
-          </Routes>
-        </div>
-        <Footer />
-      </div>
-    </Router>
+    <div className="m-0 p-0 flex flex-col h-screen">
+      <AppRouter />
+    </div>
   );
 }
