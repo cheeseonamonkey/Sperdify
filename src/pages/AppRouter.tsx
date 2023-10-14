@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import NotFoundPage from './NotFoundPage';
 import AuthPage from './AuthPage';
 import ProfilePage from './ProfilePage';
+import SongOfTheDayPage from './SotdPage';
 
 export default function AppRouter() {
     return (
@@ -23,6 +24,7 @@ export default function AppRouter() {
                         <Route path='/about' element={<AboutPage />} />
                         <Route path='/login' element={<LoginPage />} />
                         <Route path='/profile' element={<ProfilePage />} />
+                        <Route path='/songOfTheDay' element={<SongOfTheDayPage />} />
                         <Route path='*' element={<NotFoundPage />} />
                     </Routes>
                 </div>

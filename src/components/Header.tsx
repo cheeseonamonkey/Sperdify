@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useIsLoggedIn } from '../util/GlobalStates';
 
 
 
 const Header: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const isLoggedIn = useIsLoggedIn();
 
     return (
         <header className="bg-cyan-900 p-1 text-white">
@@ -22,12 +24,16 @@ const Header: React.FC = () => {
                 <div className={`w-full block flex-grow lg:flex  lg:items-center lg:w-auto ${isOpen ? '' : 'hidden'}`}>
                     <div className="text-md lg:flex-grow" style={{ textShadow: '.5px .5px 1.5px #498' }}>
 
-                        <Link to="/about" className="font-poppins font-semibold block mx-2 p-2 rounded-md shadow-xl lg:inline-block lg:my-0   hover:bg-slate-700 hover:shadow-inner   hover:mt-0 text-white hover:bg-slate-700 transition duration-300">
+                        <Link to="/about" className="font-poppins  font-semibold block mx-2 p-2 rounded-md shadow-xl lg:inline-block lg:my-0   hover:bg-slate-700 hover:shadow-inner   hover:mt-0 text-white hover:bg-slate-700 transition duration-300">
                             About
                         </Link>
 
                         <Link to="/auth" className="font-poppins font-semibold block mx-2 p-2 rounded-md  shadow-xl  lg:inline-block lg:my-0   hover:bg-slate-700 hover:shadow-inner  hover:mt-0  text-white hover:bg-slate-700 transition duration-300">
-                            {false ? 'Profile' : 'Login'}
+                            {isLoggedIn ? 'Profile' : 'Login'}
+                        </Link>
+
+                        <Link to="/songOfTheDay" className="font-poppins font-semibold block mx-2 p-2 rounded-md  shadow-xl  lg:inline-block lg:my-0   hover:bg-slate-700 hover:shadow-inner  hover:mt-0  text-white hover:bg-slate-700 transition duration-300">
+                            SotD
                         </Link>
                     </div>
                 </div>

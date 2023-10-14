@@ -11,17 +11,31 @@ export default function AuthPage() {
         const urlParams = new URLSearchParams(window.location.hash.substr(1));
         const token = urlParams.get('access_token');
 
-        if (token) {
-            setAuthCode(token);
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
 
-        if (isLoggedIn) {
-            navigate('/profile');
+
+        console.log("token: " + token)
+
+        if (token) {
+            (async () => {
+                console.log("setting token: " + token)
+
+                await setAuthCode(token);
+                console.log("setting token: " + token)
+
+                // window.history.replaceState({}, document.title, window.location.pathname);
+
+                navigate('/profile')
+
+            })()
         } else {
-            navigate('/login');
+
+            if (isLoggedIn) {
+                navigate('/profile');
+            } else {
+                navigate('/login');
+            }
         }
-    }, [authCode, isLoggedIn, navigate]);
+    }, []);
 
     return null;
 }

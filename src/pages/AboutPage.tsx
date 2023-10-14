@@ -20,7 +20,7 @@ export default function AboutPage() {
             <StaticMeter label={"Thing"} value={6} max={10} />
             <StaticMeter label={"Thing"} value={2} max={10} />
 
-            <div className='m-2 ml-3 border border-gray-500 shadow-inner bg-gray-100 flex flex-col items-center p-4 rounded-lg'>
+            <div className='m-2 ml-3  text-stone-900  border border-gray-500 shadow-inner bg-gray-100 flex flex-col items-center p-4 rounded-lg'>
 
                 <h3 className='text-xl font-bold mb-4'>debug stuff:</h3>
 
@@ -29,16 +29,17 @@ export default function AboutPage() {
 
 
                     <p>Auth Code: <br /> <span className='text-xs text-blue-900 font-mono'>{authCode}</span></p>
-                    <button className='mb-3 shadow-inner bg-gray-200 p-1' onClick={() => setAuthCode('')}>Clear Auth Code</button>
 
                     <p>Logged in? <b className='font-bold text-blue-800'> {isLoggedIn.toString()}</b></p>
-                    <button className='mb-3 shadow-inner bg-gray-200 p-1' onClick={() => { }}>asdf</button>
+
+                    <button className='mb-3 shadow-inner bg-gray-200 p-1' onClick={() => setAuthCode('')}>Clear Auth Code</button>
+
 
                     <p>Some Boolean: {someBoolean.toString()}</p>
-                    <button className='mb-3 shadow-inner bg-gray-200 p-1' onClick={() => setSomeBoolean(!someBoolean)}>Toggle Boolean</button>
+                    <button className='mb-3 shadow-inner  text-blue-800 bg-gray-200 p-1' onClick={() => setSomeBoolean(!someBoolean)}>Toggle Boolean</button>
 
                     <p>Count: {count}</p>
-                    <button className='mb-3 shadow-inner bg-gray-200 p-1' onClick={() => setCount(count + 1)}>Increase Count</button>
+                    <button className='mb-3 shadow-inner text-blue-800 bg-gray-200 p-1' onClick={() => setCount(count + 1)}>Increase Count</button>
 
                 </div>
 

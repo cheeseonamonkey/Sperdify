@@ -16,11 +16,23 @@ const useSessionStorage = <T>(key: string, initialValue: T) => {
         return initialValue;
     });
 
+    const setSessionStorage = async (value: T) => {
+        return new Promise<void>((resolve, reject) => {
+            try {
+                sessionStorage.setItem(key, String(value));
+                setStoredValue(value);
+                resolve();
+            } catch (error) {
+                reject(error);
+            }
+        });
+    };
+
     useEffect(() => {
-        sessionStorage.setItem(key, String(storedValue));
+        setSessionStorage(storedValue);
     }, [key, storedValue]);
 
-    return [storedValue, setStoredValue] as const;
+    return [storedValue, setSessionStorage] as const;
 };
 
 export const useCount = () => useSessionStorage<number>('count', 0);
