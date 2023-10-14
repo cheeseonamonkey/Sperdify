@@ -1,4 +1,6 @@
 import React from 'react';
+import { useAuthCode } from '../util/GlobalStates';
+import { useNavigate } from 'react-router-dom';
 
 interface AuthButtonProps {
     isLoggedIn: boolean;
@@ -9,10 +11,15 @@ const AuthButton: React.FC<AuthButtonProps> = ({ isLoggedIn }) => {
     const REDIRECT_URI = window.location.origin + '/auth';
     const SCOPES = 'user-read-private user-read-email';
 
+
+    const [authCode, setAuthCode] = useAuthCode();
+    const navigate = useNavigate();
+
     const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES}&response_type=token&show_dialog=true`;
 
     const handleLogout = () => {
-        // Perform logout logic here
+        setAuthCode("");
+        navigate('/auth')
     };
 
     return (

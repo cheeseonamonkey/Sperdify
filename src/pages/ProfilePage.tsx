@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthCode } from '../util/GlobalStates';
+import { useAuthCode, useIsLoggedIn } from '../util/GlobalStates';
+import AuthButton from '../components/AuthButton';
 
 export default function ProfilePage() {
     const [authCode] = useAuthCode();
@@ -9,6 +10,8 @@ export default function ProfilePage() {
     const [country, setCountry] = useState('');
     const [product, setProduct] = useState('');
     const [followers, setFollowers] = useState(0);
+    const isLoggedIn = useIsLoggedIn();
+
 
     useEffect(() => {
         fetch('https://api.spotify.com/v1/me', {
@@ -36,6 +39,7 @@ export default function ProfilePage() {
                 <h2 className="mt-6 text-center text-3xl font-extrabold ">
                     Profile
                 </h2>
+                <AuthButton isLoggedIn={isLoggedIn} />
                 <div>
                     <p>Display Name: {displayName}</p>
                     <p>Email: {email}</p>
