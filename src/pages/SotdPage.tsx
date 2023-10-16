@@ -19,7 +19,8 @@ export default function SongOfTheDayPage() {
                 <h2 className="mt-3 text-center text-3xl font-extrabold text-gray-900">
                     Song of the Day                </h2>
 
-                <div className='w-[90%]'>
+                <div className='w-[92%]'>
+                    <h3 className='text-xl'>Nominate song of the day:</h3>
                     <SpotifySearchBar setResults={setResults} />
                     <SearchResultsList results={results} />
                 </div>
