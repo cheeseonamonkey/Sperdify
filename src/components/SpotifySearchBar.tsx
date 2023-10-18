@@ -56,7 +56,7 @@ const SpotifySearchBar: React.FC<SpotifySearchBarProps> = ({ setResults }) => {
                     <input
                         ref={searchRef}
                         type="text"
-                        className="border-2 border-gray-300 bg-white h-11 px-3 pr-4 rounded-lg text-md font-varela-round font-bold focus:outline-none focus:shadow-inner"
+                        className="border-2 border-gray-300 bg-white h-11 px-3 pr-4 rounded-lg text-md font-varela-round font-bold shadow-sm focus:outline-none focus:shadow-inner"
                         onKeyPress={(event: React.KeyboardEvent<HTMLInputElement>) => {
                             if (event.key === 'Enter') {
                                 searchSpotify();
