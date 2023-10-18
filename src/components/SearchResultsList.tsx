@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
+import { SpotifyTrack } from '../models/SpotifyApiModels';
 
 interface SearchResultsListProps {
-    results: any[];
+    results: SpotifyTrack[];
 }
 
 const SearchResultsList: React.FC<SearchResultsListProps> = ({ results }) => {
