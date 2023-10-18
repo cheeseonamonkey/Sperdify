@@ -1,8 +1,8 @@
 -- Drop tables if they exist
 DROP TABLE IF EXISTS SongOfTheDay;
-DROP TABLE IF EXISTS Song;
+DROP TABLE IF EXISTS Songs;
 DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Channel;
+DROP TABLE IF EXISTS Channels;
 
 -- Create Users table
 CREATE TABLE Users (
@@ -13,8 +13,8 @@ CREATE TABLE Users (
     dateTime DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create Song table
-CREATE TABLE Song (
+-- Create Songs table
+CREATE TABLE Songs (
     id TEXT PRIMARY KEY,
     songName TEXT NOT NULL,
     artistName TEXT NOT NULL,
@@ -24,8 +24,8 @@ CREATE TABLE Song (
     dateTime DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
--- Create Channel table
-CREATE TABLE Channel (
+-- Create Channels table
+CREATE TABLE Channels (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     metaData TEXT,
     userId INTEGER NOT NULL,
@@ -41,20 +41,8 @@ CREATE TABLE SongOfTheDay (
     channelId INTEGER NOT NULL,
     nominationDate DATETIME DEFAULT CURRENT_TIMESTAMP,
     dateTime DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (songId) REFERENCES Song(id) ON DELETE CASCADE,
+    FOREIGN KEY (songId) REFERENCES Songs(id) ON DELETE CASCADE,
     FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE,
-    FOREIGN KEY (channelId) REFERENCES Channel(id) ON DELETE CASCADE
+    FOREIGN KEY (channelId) REFERENCES Channels(id) ON DELETE CASCADE
 );
-
--- Create view for SongOfTheDay queue for specific channel
-CREATE VIEW vw_SongOfTheDayQueue AS
-SELECT c.id AS channelId, c.metaData AS channelData, s.songName, u.nickname, strftime('%Y-%m-%dT%H:%M:%S', sod.dateTime) AS dateTime
-FROM SongOfTheDay sod
-JOIN Song s ON sod.songId = s.id
-JOIN Users u ON sod.userId = u.id
-JOIN Channel c ON sod.channelId = c.id
-ORDER BY dateTime DESC;
-
-
-
 

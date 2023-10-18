@@ -37,21 +37,20 @@
     "vite": "^4.4.9",
     "vitest": "^0.34.4"
   },
- "scripts": {
-  "build": "vite build && npm run init-db",
-  "dev": "vite dev && npm run init-db",
-  "format": "prettier --write .",
-  "lint:format": "prettier --cache --check .",
-  "lint": "eslint --cache .",
-  "test": "npm-run-all --parallel tsc:check vitest:run lint lint:format",
-  "tsc:check": "tsc",
-  "vitest:run": "vitest run",
-"init-db": "rm -rf db && mkdir db && sqlite3 -echo db/sperdify.db < db/dbSchema.sql",
-
-  "sqlite3": "sqlite3 db/sperdify.db",
-  "db-sample-data": "sqlite3 db/sperdify.db < db/sampleData.sql"
-},
-
+  "scripts": {
+    "start": "node server.js",
+    "build": "vite build && npm run init-db",
+    "dev": "vite dev && npm run init-db",
+    "format": "prettier --write .",
+    "lint:format": "prettier --cache --check .",
+    "lint": "eslint --cache .",
+    "test": "npm-run-all --parallel tsc:check vitest:run lint lint:format",
+    "tsc:check": "tsc",
+    "vitest:run": "vitest run",
+    "init-db": "rm -rf db/sperdify.db && sqlite3 -echo db/sperdify.db < db/dbSchema.sql",
+    "sql": "sqlite3 db/sperdify.db",
+    "db-sample-data": "sqlite3 -echo db/sperdify.db < db/sampleData.sql"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
