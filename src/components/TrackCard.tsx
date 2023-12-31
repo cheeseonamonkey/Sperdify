@@ -1,17 +1,9 @@
 import React from 'react';
+import { SpotifyTrack } from '../models/SpotifyApiModels';
 
-interface Track {
-    album: {
-        images: Array<{ url: string }>
-    },
-    name: string,
-    artists: Array<{ name: string }>,
-    duration_ms: number,
-    popularity: number,
-}
 
 interface TrackCardProps {
-    track: Track,
+    track: SpotifyTrack,
 }
 
 const TrackCard: React.FC<TrackCardProps> = ({ track }) => {

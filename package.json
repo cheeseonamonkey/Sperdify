@@ -15,6 +15,7 @@
     "axios": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.3.1",
     "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
@@ -46,10 +47,7 @@
     "lint": "eslint --cache .",
     "test": "npm-run-all --parallel tsc:check vitest:run lint lint:format",
     "tsc:check": "tsc",
-    "vitest:run": "vitest run",
-    "init-db": "rm -rf db/sperdify.db && sqlite3 -echo db/sperdify.db < db/dbSchema.sql",
-    "sql": "sqlite3 db/sperdify.db",
-    "db-sample-data": "sqlite3 -echo db/sperdify.db < db/sampleData.sql"
+    "vitest:run": "vitest run"
   },
   "browserslist": [
     ">0.2%",
@@ -57,4 +55,3 @@
     "not op_mini all"
   ]
 }
-

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Martel+Sans&family=Nunito+Sans:wght@300&family=Poppins&family=Quicksand&family=Rubik:wght@500&family=Varela+Round&family=Anton&family=Allan&family=Arvo&family=Port+Lligat+Slab&family=Raleway&family=Oxygen&family=Zilla+Slab:wght@500&family=Titillium+Web&family=Montserrat:wght@500&family=Exo+2:wght@500&family=Roboto+Condensed&family=Josefin+Sans&family=Inconsolata:wght@400&family=Mooli&family=Ubuntu&family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+SC:wght@700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +18,9 @@
   }
 } */
 
+.font-smallcaps {
+  font-family: 'Alegreya SC', serif;
+}
 
 body {
   background-color: var(--background-color);

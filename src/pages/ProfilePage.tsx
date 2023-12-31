@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthCode, useIsLoggedIn } from '../util/GlobalStates';
 import AuthButton from '../components/AuthButton';
+import { SpotifyUser } from '../models/SpotifyApiModels';
+import { ProfileCard } from './ProfileCard';
 
 export default function ProfilePage() {
     const [authCode] = useAuthCode();
-    const [displayName, setDisplayName] = useState('');
-    const [email, setEmail] = useState('');
-    const [profileImage, setProfileImage] = useState('');
-    const [country, setCountry] = useState('');
-    const [product, setProduct] = useState('');
-    const [followers, setFollowers] = useState(0);
+    const [user, setUser] = useState<SpotifyUser | null>(null);
     const isLoggedIn = useIsLoggedIn();
-
 
     useEffect(() => {
         fetch('https://api.spotify.com/v1/me', {
@@ -21,12 +17,7 @@ export default function ProfilePage() {
         })
             .then((response) => response.json())
             .then((data) => {
-                setDisplayName(data.display_name);
-                setEmail(data.email);
-                setProfileImage(data.images[0]?.url);
-                setCountry(data.country);
-                setProduct(data.product);
-                setFollowers(data.followers.total);
+                setUser(data);
             })
             .catch((error) => {
                 console.error('Error fetching user data:', error);
@@ -34,27 +25,12 @@ export default function ProfilePage() {
     }, [authCode]);
 
     return (
-        <div className="min-h-screen flex justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
-                <h2 className="mt-3 text-center text-3xl font-extrabold ">
-                    Profile
-                </h2>
-                <AuthButton isLoggedIn={isLoggedIn} />
-                <div>
-                    <p>Display Name: {displayName}</p>
-                    <p>Email: {email}</p>
-                    <p>Country: {country}</p>
-                    <p>Product: {product}</p>
-                    <p>Followers: {followers}</p>
-                    {profileImage && (
-                        <img
-                            src={profileImage}
-                            alt="Profile"
-                            className="w-32 h-32 rounded-full mx-auto mt-4"
-                        />
-                    )}
-                </div>
-            </div>
+        <div className="min-h-screen flex flex-col items-center justify-top bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+
+            <AuthButton isLoggedIn={isLoggedIn} />
+
+            <ProfileCard user={user} />
+            {/* Other important content on the page */}
         </div>
     );
 }
